@@ -1,0 +1,10 @@
+{
+	"_comment": "Blocks",
+	"block.luminus.debugblock": "Debug Ore",
+
+	"_comment": "Creative Tabs",
+	"itemGroup.luminus": "§6Luminus",
+
+	"_comment": "Items",
+	"item.luminus.debugcrystal": "Debug Crystal"
+}
