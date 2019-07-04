@@ -8,4 +8,7 @@ import net.minecraftforge.registries.ObjectHolder;
 public class ModBlocks {
     @ObjectHolder("luminus:debugblock")
     public static DebugBlock DEBUGBLOCK;
+
+    @ObjectHolder("luminus:kappagenerator")
+    public static KappaGenerator KAPPAGENERATOR;
 }

@@ -1,6 +1,7 @@
 {
 	"_comment": "Blocks",
 	"block.luminus.debugblock": "Debug Ore",
+	"block.luminus.kappagenerator": "Kappa Generator",
 
 	"_comment": "Creative Tabs",
 	"itemGroup.luminus": "§6Luminus",

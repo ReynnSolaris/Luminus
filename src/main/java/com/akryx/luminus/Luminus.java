@@ -1,6 +1,7 @@
 package com.akryx.luminus;
 
 import com.akryx.luminus.blocks.DebugBlock;
+import com.akryx.luminus.blocks.KappaGenerator;
 import com.akryx.luminus.blocks.ModBlocks;
 import com.akryx.luminus.items.DebugCrystal;
 import com.akryx.luminus.items.ModItems;
@@ -69,11 +70,13 @@ public class Luminus {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
             event.getRegistry().register(new DebugBlock());
+            event.getRegistry().register(new KappaGenerator());
         }
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
             Item.Properties properties = new Item.Properties().group(setup.itemGroup);
             event.getRegistry().register(new BlockItem(ModBlocks.DEBUGBLOCK, properties).setRegistryName("debugblock"));
+
             event.getRegistry().register(new DebugCrystal());
         }
     }
