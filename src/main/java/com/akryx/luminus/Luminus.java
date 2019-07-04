@@ -2,6 +2,7 @@ package com.akryx.luminus;
 
 import com.akryx.luminus.blocks.DebugBlock;
 import com.akryx.luminus.blocks.KappaGenerator;
+import com.akryx.luminus.blocks.KappaGeneratorTile;
 import com.akryx.luminus.blocks.ModBlocks;
 import com.akryx.luminus.items.DebugCrystal;
 import com.akryx.luminus.items.ModItems;
@@ -12,6 +13,7 @@ import com.akryx.luminus.setup.ServerProxy;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -76,8 +78,11 @@ public class Luminus {
         public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
             Item.Properties properties = new Item.Properties().group(setup.itemGroup);
             event.getRegistry().register(new BlockItem(ModBlocks.DEBUGBLOCK, properties).setRegistryName("debugblock"));
-
+            event.getRegistry().register(new BlockItem(ModBlocks.KAPPAGENERATOR, properties).setRegistryName("kappagenerator"));
             event.getRegistry().register(new DebugCrystal());
+        }
+        public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
+            event.getRegistry().register(TileEntityType.Builder.create(() -> new KappaGeneratorTile(), ModBlocks.KAPPAGENERATOR).build(null).setRegistryName("kappagenerator"));
         }
     }
 }
