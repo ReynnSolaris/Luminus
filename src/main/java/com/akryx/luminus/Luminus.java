@@ -81,6 +81,7 @@ public class Luminus {
             event.getRegistry().register(new BlockItem(ModBlocks.KAPPAGENERATOR, properties).setRegistryName("kappagenerator"));
             event.getRegistry().register(new DebugCrystal());
         }
+        @SubscribeEvent
         public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
             event.getRegistry().register(TileEntityType.Builder.create(() -> new KappaGeneratorTile(), ModBlocks.KAPPAGENERATOR).build(null).setRegistryName("kappagenerator"));
         }
