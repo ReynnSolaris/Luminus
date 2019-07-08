@@ -31,7 +31,7 @@ public class KappaGeneratorContainer extends Container {
         this.playerInventory = new InvWrapper(inventory);
 
         tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-            addSlot(new SlotItemHandler(h, 0, 44, 40));
+            addSlot(new SlotItemHandler(h, 0, 29, 25));
         });
         layoutPlayerInventorySlots(10, 70);
     }
