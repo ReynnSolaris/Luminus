@@ -1,9 +1,6 @@
 package com.akryx.luminus;
 
-import com.akryx.luminus.blocks.DebugBlock;
-import com.akryx.luminus.blocks.KappaGenerator;
-import com.akryx.luminus.blocks.KappaGeneratorTile;
-import com.akryx.luminus.blocks.ModBlocks;
+import com.akryx.luminus.blocks.*;
 import com.akryx.luminus.items.DebugCrystal;
 import com.akryx.luminus.items.ModItems;
 import com.akryx.luminus.setup.ClientProxy;
@@ -11,10 +8,13 @@ import com.akryx.luminus.setup.IProxy;
 import com.akryx.luminus.setup.ModSetup;
 import com.akryx.luminus.setup.ServerProxy;
 import net.minecraft.block.Block;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -35,6 +35,8 @@ import java.util.stream.Collectors;
  */
 @Mod("luminus")
 public class Luminus {
+    public static final String MODID = "luminus";
+
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new ServerProxy());
@@ -84,6 +86,13 @@ public class Luminus {
         @SubscribeEvent
         public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
             event.getRegistry().register(TileEntityType.Builder.create(() -> new KappaGeneratorTile(), ModBlocks.KAPPAGENERATOR).build(null).setRegistryName("kappagenerator"));
+        }
+        @SubscribeEvent
+        public static void onContainerRegistry(final RegistryEvent.Register<ContainerType<?>> event) {
+            event.getRegistry().register(IForgeContainerType.create((windowId, inv, data) -> {
+                BlockPos blockPos = data.readBlockPos();
+                return new KappaGeneratorContainer(windowId, Luminus.proxy.getClientWorld(), blockPos, inv, Luminus.proxy.getClientPlayer());
+            }).setRegistryName("kappagenerator"));
         }
     }
 }

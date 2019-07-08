@@ -1,5 +1,6 @@
 package com.akryx.luminus.blocks;
 
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
 
@@ -15,4 +16,7 @@ public class ModBlocks {
 
     @ObjectHolder("luminus:kappagenerator")
     public static TileEntityType<KappaGeneratorTile> KAPPA_TILE;
+
+    @ObjectHolder("luminus:kappagenerator")
+    public static ContainerType<KappaGeneratorContainer> KAPPA_CONTAINER;
 }
